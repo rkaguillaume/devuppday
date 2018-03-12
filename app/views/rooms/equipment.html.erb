@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= render 'room_menu' %>
+  </div>
+  <div class="col-md-9">
+    <div class="title-navbar text-center">Equipements</div>
+    <div class="panel panel-default">
+
+      <div class="panel-body">
+        <div class="container">
+          <%= form_for @room do |f| %>
+
+          <div class="row form-group">
+            <div class="col-md-4">
+              <%= f.check_box :is_table %> Tables
+            </div>
+            <div class="col-md-4">
+              <%= f.check_box :is_chair %> Chaises
+            </div>
+            <div class="col-md-4">
+              <%= f.check_box :is_kitchen %> Cuisine
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-4">
+              <%= f.check_box :is_wc %> WC
+            </div>
+            <div class="col-md-4">
+              <%= f.check_box :is_parking %> Parking
+            </div>
+            <div class="col-md-4">
+              <%= f.check_box :is_outdoor %> Espace exterieur
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-4">
+              <%= f.check_box :is_tv %> TV
+            </div>
+            <div class="col-md-4">
+              <%= f.check_box :is_projector %> Projecteur
+            </div>
+            <div class="col-md-4">
+              <%= f.check_box :is_stage %> Scène
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-4">
+              <%= f.check_box :is_shower %> Douche
+            </div>
+            <div class="col-md-4">
+              <%= f.check_box :is_sound %> Sonorisation
+            </div>
+            <div class="col-md-4">
+              <%= f.check_box :is_bar %> Bar
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-4">
+              <%= f.check_box :is_air %> Climatisation
+            </div>
+            <div class="col-md-4">
+              <%= f.check_box :is_heating %> Chauffage
+            </div>
+            <div class="col-md-4">
+              <%= f.check_box :is_wifi %> WiFi
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-4">
+              <%= f.check_box :is_decoration %> Décorations
+            </div>
+          </div>
+          <br/><br/>
+
+          <div class="text-center">
+            <%= f.submit "Enregistrer", class: "btn btn-form" %>
+          </div>
+
+
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

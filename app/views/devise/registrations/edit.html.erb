@@ -1,0 +1,104 @@
+<div class="row">
+  <div class="col-md-3">
+
+  <br/><br/><br/><br/><br/>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="center">
+            <%= image_tag avatar_url(current_user), class: "avatar-full" %>
+          </div>
+
+          <hr/><br/>
+
+          Pour <b>changer</b> de photo de profil merci d'utiliser <b>Gravatar</b>, c'est simple et gratuit.
+
+          <br/><br/>
+
+          <%= link_to "Modifier ma photo avec Gravatar", href="https://wordpress.com/start/wpcc/oauth2-user?ref=oauth2&oauth2_redirect=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%2F%3Fclient_id%3D1854%26response_type%3Dcode%26blog_id%3D0%26state%3D3d85551044e307acbec34f80f86fe9c82e8cb8d708817d415982f4d6a28b22c3%26redirect_uri%3Dhttps%253A%252F%252Fen.gravatar.com%252Fconnect%252F%253Faction%253Drequest_access_token%26jetpack-code%26jetpack-user-id%3D0%26action%3Doauth2-login&oauth2_client_id=1854", class: "btn btn-default" %>
+        </div>
+      </div>
+
+      <br/>
+      <%= link_to "Voir mon profil", user_path(current_user.id), class: "btn btn-default" %>
+
+
+  </div>
+
+
+  <div class="col-md-9 text-center">
+    <div class="title-navbar">
+      Modifier votre profil
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="container">
+
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= render 'shared/devisemes'%>
+
+        <% if current_user && @user.local || @user.associat || @user.particulier %>
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                  <h3><i class="far fa-lightbulb text-babu"></i> Types de réservation</h3><br/>
+
+                   Etes-vous un individuelle résident ou externe ? Etes-vous une association ?
+                    <br/><br/>
+
+                    <div class="form-group">
+                      <%= f.check_box :local %> Réservation Résident
+                      <br/><br/>
+                      <%= f.check_box :associat %> Réservation Association
+                      <br/><br/>
+                      <%= f.check_box :particulier %> Réservation Externe
+                    </div>
+
+              </div>
+            </div>
+
+          <% end %>
+
+
+            <div class="form-group">
+              <%= f.text_field :fullname, autofocus: true, placeholder: "Prénom Nom / Nom de l'entreprise", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.text_field :surname, autofocus: true, placeholder: "Prénom", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.text_field :phone_number, autofocus: true, placeholder: "Numéro de téléphone", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.text_area :description, rows: 5, cols: 25, autofocus: true, placeholder: "Description", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control", autocomplete: "email" %>
+            </div>
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+
+            <div class="form-group">
+              <%= f.password_field :password, autocomplete: "off", placeholder: "Nouveau mot de passe (laissez vide si vous ne souhaitez pas le changer)", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirmer le mot de passe", class: "form-control" %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Save", class: "btn btn-normal btn-block" %>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<% if @pdfs.count > 0 %>
+  <br/><br/>
+
+  <div class="row">
+    <% @pdfs.each do |pdf| %>
+    <div class="col-md-16">
+      <div >
+        <iframe src="<%= pdf.contrat.url(:original, false) %>"></iframe>
+        <span class="btn btn-default btn-file text-babu">
+          <%= link_to "Voir le contrat", pdf.contrat.url(:original, false) %> &nbsp;
+          <span class="right">
+            <%= link_to pdf.contrat.url(:original, false), remote: true, method: :delete, data: {confirm: "Êtes-vous sûr ?"} do %>
+              <i class="far fa-trash-alt" aria-hidden="true"></i>
+            <% end %>
+          </span>
+        </span>
+        </div>
+
+      </div>
+
+    </div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,198 @@
+<!-- RECHERCHE -->
+
+<!--
+
+<div class="row">
+  <div class="col-md-7 banner">
+    <h1><span class="text-red">Uppday</span> Réservez votre salle pour vos soirées !</h1>
+  </div>
+</div>
+
+
+<%= form_tag search_path, method: :get do %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= text_field_tag :search, params[:search], placeholder: "Où voulez-vous aller ?", class: "form-control", id:"autolocation" %>
+    </div>
+    <div class="col-md-3">
+      <%= text_field_tag :start_date, params[:start_date], placeholder: "Arrivée", class: "form-control datepicker" %>
+    </div>
+    <div class="col-md-3">
+      <%= text_field_tag :end_date, params[:end_date], placeholder: "Départ", class: "form-control datepicker" %>
+    </div>
+  </div>
+  <br/><br/>
+
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4">
+      <%= submit_tag "Search", class: "btn btn-normal btn-block" %>
+    </div>
+  </div>
+<% end %>
+
+<br/><hr/><br/>
+
+-->
+
+
+
+<!-- TEST -->
+<div class="cover-image" style="background-image: url('/assets/roomuppday.jpg')">
+  <br/><br/><br/><br/><br/><br/>
+  <div class="col-md-12 banner text-center">
+    <i class="far fa-compass fa-3x title-cover"></i>
+    <h1 class="title-cover"><span class="text-red">Uppday</span> simplifiez la gestion de vos salles !</h1><br/>
+  </div>
+
+
+    <div class="col-md-12 text-center">
+      <button class="btn btn-home text-babu">
+        <%= link_to "Se connecter", new_user_session_path %>
+      </button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-home text-babu">
+        <%= link_to "Créer un compte", new_user_registration_path %>
+      </button>
+    </div>
+
+</div>
+
+
+
+
+
+
+<!-- INFO UPPDAY -->
+  <br/><br/>
+<div class="row">
+<div class="text-center"><h3><strong>Toute votre gestion, sur une seule plateforme</strong></h3></div>
+<br/><br/><br/>
+<div class="row">
+  <div class="col-md-4 col-sm-12 text-center">
+    <!-- <i class="fa fa-search-plus fa-4x"></i> -->
+    <img src="/assets/AnnonceBleu.png" alt="Annonce Uppday" style="width: 15%;"><br/><br/>
+    <h3> Publiez votre salle </h3>
+    <p> Créez rapidement votre annonce, mettez en valeur vos salles et équipements grâce à des fiches produits détaillées</p>
+  </div>
+  <div class="col-md-4 col-sm-12 text-center">
+    <!-- <i class="fa fa-paper-plane fa-4x"></i> -->
+    <img src="/assets/AvionPapierBleu.png" alt="Annonce Uppday" style="width: 22%;"><br/><br/>
+    <h3> Gerez vos demandes </h3>
+    <p> Gérez toutes les demandes de réservation de vos salles, en un seul clic</p>
+  </div>
+  <div class="col-md-4 col-sm-12 text-center">
+    <!-- <i class="far fa-clock fa-4x"></i> -->
+    <img src="/assets/SablierBleu.png" alt="Annonce Uppday" style="width: 15%;"><br/><br/>
+    <h3> Gagnez du temps </h3>
+    <p> Grâce à notre solution en ligne, vous pouvez suivre et gérer vos réservations depuis n’importe quel terminal mobiel et d’une connexion internet</p>
+  </div>
+
+</div>
+<br/><br/><br/>
+<div class="col-md-12 text-center">
+  <button class="btn btn-form">
+    <%= link_to "Comment ça marche ?", uppday_path, style: "color: white; text-decoration: none;" %>
+  </button>
+</div>
+<br/><br/><br/><br/>
+<hr/>
+
+</div>
+
+<!-- HOMES/SALLES -->
+<div><h3 class="text-center"><strong>Nos dernières salles en ligne</strong></h3></div><br/>
+<br/>
+
+<div class="row">
+  <%= render partial: "rooms/rooms_list", locals: {rooms: @rooms} %>
+</div>
+
+<br/><br/>
+<hr/>
+
+<!-- INFO UPPDAY -->
+  <br/><br/>
+<div class="row">
+  <div class="text-center"><h3><strong>Nous vous accompagnons pour améliorer la visibilité de vos salles</strong></h3></div>
+    <br/><br/><br/>
+
+      <div class="row">
+        <div class="col-md-6 col-sm-12 text-center">
+            <i class="fas fa-code fa-3x"></i><br/>
+            <h3> Référencement </h3>
+        </div>
+
+        <div class="col-md-6 col-sm-12 text-center">
+          <i class="fas fa-camera fa-3x"></i><br/>
+          <h3> Photographie </h3>
+        </div>
+      </div>
+
+      <br/><br/><br/>
+
+      <div class="col-md-12 text-center">
+        <button class="btn btn-form">
+          <%= link_to "En savoir plus !", services_path, style: "color: white; text-decoration: none;" %>
+        </button>
+      </div>
+
+    <br/><br/>
+</div>
+
+
+<!-- CITIES -->
+<!-- <div><h3>Cities</h3></div>
+<br/>
+
+<div class="row">
+  <div class="col-md-3 col-sm-12">
+    <a href="http://localhost:3000/search?utf8=%E2%9C%93&search=los+angeles">
+      <div class="discovery-card" style="background-image: url('/assets/LA.jpg')"></div>
+    </a>
+  </div>
+  <div class="col-md-3 col-sm-12">
+    <a href="http://localhost:3000/search?utf8=%E2%9C%93&search=london">
+      <div class="discovery-card" style="background-image: url('/assets/LD.jpg')"></div>
+    </a>
+  </div>
+  <div class="col-md-3 col-sm-12">
+    <a href="http://localhost:3000/search?utf8=%E2%9C%93&search=paris">
+      <div class="discovery-card" style="background-image: url('/assets/PR.jpg')"></div>
+    </a>
+  </div>
+  <div class="col-md-3 col-sm-12">
+    <a href="http://localhost:3000/search?utf8=%E2%9C%93&search=miami">
+      <div class="discovery-card" style="background-image: url('/assets/MI.jpg')"></div>
+    </a>
+  </div>
+</div>
+<br/><br/>
+<hr/>
+<br/><br/> -->
+
+
+<script>
+  $('#start_date').datepicker({
+    dateFormat: 'dd-mm-yy',
+    minDate: 0,
+    maxDate: '24m',
+    onSelect: function(selected) {
+      $('#end_date').datepicker("option", "minDate", selected);
+      $('#end_date').attr("disabled", false);
+      }
+  });
+
+  $('#end_date').datepicker({
+    dateFormat: 'dd-mm-yy',
+    minDate: 0,
+    maxDate: '24m',
+    onSelect: function(selected) {
+      $('#start_date').datepicker("option", "maxDate", selected);
+      }
+  });
+
+$(function() {
+  $("#autolocation").geocomplete();
+})
+
+
+</script>

@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= render 'room_menu' %>
+  </div>
+  <div class="col-md-9">
+    <div class="title-navbar text-center">Localisation de la salle</div>
+    <div class="panel panel-default">
+
+      <div class="panel-body">
+        <div class="container">
+          <%= form_for @room do |f| %>
+
+          <div class="row">
+            <div class="form-group">
+              <label>Adresse</label>
+              <%= f.text_field :address, placeholder: "Quelle est votre adresse?", class: "form-control", required: true, id: "autoaddress" %>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <%= f.submit "Enregistrer", class: "btn btn-form" %>
+          </div>
+
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+$(function() {
+  $("#autoaddress").geocomplete();
+})
+</script>

@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-md-3">
+    <div class="center">
+      <%= image_tag avatar_url(current_user), class: "avatar-full" %>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-name"><%= current_user.fullname %></div>
+      <div class="panel-body">
+        <ul class="sidebar-list">
+          <% if current_user.confirmation_token %>
+            <li>Adresse Email<span class="pull-right icon-babu"><i class="far fa-check-circle"></i></span></li>
+          <% end %>
+          <% if current_user.provider %>
+            <li>Facebook<span class="pull-right icon-babu"><i class="far fa-check-circle"></i></span></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+      <%= link_to "Voir mon profil", user_path(current_user.id), class: "btn btn-default" %>
+      <br/>
+      <%= link_to "Modifier mon profil", edit_user_registration_path, class: "btn btn-default" %></li>
+
+  </div>
+  <div class="col-md-9">
+
+    <!-- Notification -->
+    <div class="title-navbar">Notifications</div>
+    <div class="panel panel-default">
+
+      <div class="panel-body">
+          <%= link_to notifications_path do %>
+              Vous avez <span id="num_of_unread"><%= current_user.unread %></span> notification(s).
+          <% end %>
+      </div>
+      <hr/>
+      <div class="panel-body">
+        Bonjour ! N'hésitez pas à jeter un oeil à notre Centre d'aide si vous avez la moindre question sur le site !
+        </div>
+        <hr/>
+        <div class="panel-body">
+          Fonctionnement du Tableau de bord
+          </div>
+          <hr/>
+          <div class="panel-body">
+            Vous pouvez modifier les caractéristique de votre salle depuis l'onglet
+            <%= link_to "gestionnaire de salle", rooms_path %>
+          </div><br/>
+    </div>
+
+    <!-- Your Listings -->
+    <% if @rooms.blank? %>
+
+    <% else %>
+    <div class="title-navbar">Vos salles (<%= @rooms.length %>)</div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= render partial: "rooms/rooms_list", locals: {rooms: @rooms} %>
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+</div>

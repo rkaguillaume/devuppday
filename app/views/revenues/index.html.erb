@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="title-navbar">Revenus de la semaine</div>
+    <div class="panel panel-default">
+
+      <div class="panel-body">
+        <div class="container text-center">
+           <%= line_chart @this_week_revenue, colors: ["#00A699"] %>
+        </div>
+      </div>
+    </div>
+        <hr/>
+  </div>
+
+
+  <div class="col-md-12">
+    <div class="title-navbar">Revenus du mois</div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="container text-center">
+              <%= column_chart @this_month_revenue, colors: ["#00A699"] %>
+        </div>
+      </div>
+    </div>
+        <hr/>
+  </div>
+
+
+
+  <div class="col-md-12">
+    <div class="title-navbar">Revenus par mois</div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="container text-center">
+              <%= column_chart @this_year_revenue, colors: ["#00A699"] %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>

@@ -1,0 +1,85 @@
+<div class="row">
+  <!-- <div class="col-md-3">
+    <ul class="sidebar-list">
+      <li class="sidebar-item"><%= link_to "Vos salles", rooms_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "Vos réservations", your_reservations_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "Vos locations", your_booking_path, class: "sidebar-link active" %></li>
+    </ul>
+  </div> -->
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body panel-block">
+        <div class="row">
+
+          <div class="col-md-2">
+            <b>Vos réservations</b>
+          </div>
+
+          <div class="col-md-3">
+            <b>Date</b>
+
+          </div>
+
+          <div class="col-md-3 text-center">
+            <span>
+              <b>Commune</b>
+            </span>
+          </div>
+
+          <div class="col-md-1">
+            <b>Status</b>
+          </div>
+
+          <div class="col-md-3 text-right">
+            <b>Contacter la commune</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-body">
+
+        <% @booking.each do |booking| %>
+          <div class="row">
+
+            <div class="col-md-2">
+              <%= link_to room_path(booking.room) do %>
+                <%= image_tag booking.room.cover_photo(:thumb) %>
+              <% end %>
+            </div>
+
+            <div class="col-md-3">
+              <%= link_to booking.room.listing_name, room_path(booking.room) %><br/>
+              <%= booking.start_date.strftime('%v') %>
+
+            </div>
+
+            <div class="col-md-3 text-center">
+              <span>
+                <%= image_tag avatar_url(booking.room.user), class: "img-circle avatar-small" %><br/>
+                <%= link_to user_path(booking.room.user) do %><br/>
+                    <%= booking.room.user.fullname %>
+                <% end %>
+              </span>
+            </div>
+
+            <div class="col-md-1">
+              <p><%= booking.status %></p>
+            </div>
+
+            <div class="col-md-3 text-right">
+              <% if current_user && current_user != booking.room.user %>
+                <%= link_to "Envoyer un message", conversations_path(sender_id: current_user.id, recipient_id: booking.room.user.id), method: :post, class: "btn btn-message" %>
+              <br/><br/><% end %>
+
+              <%= render partial: "reviews/guest_form", locals: {reservation: booking} if booking.Approved? %>
+            </div>
+          </div>
+
+          <hr/>
+
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

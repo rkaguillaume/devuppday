@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Uppday</title>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbiWC51upai4_TdAWrdzYvrOBKimIFM28&libraries=places"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+
+
+  </head>
+
+  <body>
+
+
+  <%= render 'shared/navbar' %>
+  <%= render 'shared/message' %>
+
+
+      <% if current_user %>
+        <input type="hidden" id="user_id" value="<%= current_user.id %>">
+      <% end %>
+
+  <div class="container">
+    <%= yield %>
+  </div>
+
+  </body>
+
+  <footer>
+
+    <% if !current_page?(root_path) && !current_page?(services_path) && !current_page?(project_path) && !current_page?(uppday_path) && !current_page?(notifications_path) && !current_page?(dashboard_path) && !current_page?(your_reservations_path) && !current_page?(your_booking_path) && !current_page?(revenues_path) && !current_page?(conversations_path) && !current_page?(host_calendar_path) && !current_page?("/rooms/#{params[:id]}") %>
+
+    <% else %>
+      <%= render 'shared/footer' %>
+
+    <% end %>
+
+
+
+  </footer>
+
+
+</html>

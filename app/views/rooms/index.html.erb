@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-md-3">
+    <ul class="sidebar-list">
+      <li class="sidebar-item"><%= link_to "Vos salles", rooms_path, class: "sidebar-link active" %></li>
+      <li class="sidebar-item"><%= link_to "Vos réservations", your_reservations_path, class: "sidebar-link" %></li>
+    <!--  <li class="sidebar-item"><%= link_to "Vos locations", your_booking_path, class: "sidebar-link" %></li> -->
+    </ul>
+<br/>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <i class="far fa-lightbulb fa-2x text-babu"></i>
+        <br/><br/>
+
+        <i class="info-i">En cliquant sur "modifier", vous pourrez changer les caractéristiques de votre salle.</i>
+        <br/>
+
+      </div>
+    </div>
+
+  <br/><br/>
+
+  </div>
+  <div class="col-md-9">
+    <div class="title-navbar">
+      Vos salles
+    </div>
+
+
+        <% @rooms.each do |room| %>
+        <div class="panel panel-default">
+            <div class="panel-body panel-block">
+              Ajoutez ou modifiez les caractéristiques de votre salle !
+            </div>
+          <div class="panel-body">
+          <div class="row">
+            <div>
+
+              <div class="col-md-3">
+                <%= image_tag room.cover_photo(:medium) %>
+              </div>
+
+              <div class="col-md-5 pull-right" style="padding-top: 60px;">
+                <h4><%= room.listing_name %></h4>
+                <%= link_to "Mettez à jour votre salle", listing_room_path(room), class: "btn btn-message" %>
+              </div>
+
+
+              <!--
+              <div class="col-md-3 right">
+                <%= link_to "Modifier", listing_room_path(room), class: "btn btn-form" %>
+              </div> -->
+
+            </div>
+          </div>
+          </div>
+
+
+
+<div class="panel-body" >
+          <div class="row">
+<hr/>
+            <div class="col-md-2">
+              <%= link_to "Modifier", listing_room_path(room) %>
+
+            </div>
+
+            <div class="col-md-2">
+              <%= link_to "Calendrier",host_calendar_path %><br/>
+
+            </div>
+
+            <div class="col-md-8">
+              <%= link_to room.listing_name, room %><br/>
+
+            </div>
+
+          </div>
+        </div>
+
+
+
+      </div>
+        <% end %>
+
+  </div>
+</div>

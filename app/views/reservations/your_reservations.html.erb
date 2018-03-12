@@ -1,0 +1,133 @@
+<div class="row">
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <i class="far fa-lightbulb fa-2x text-babu"></i>
+      <br/><br/>
+
+      Pour <b>accepter</b> ou <b>refuser</b> une demande de <b>réservation en attente</b>, rien de plus simple, cliquez sur :
+      <br/><br/>
+
+
+        <i class="fas fa-check fa-lg text-babu greenwaiting"></i>&nbsp; pour <b>accepter</b>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <i class="fas fa-times fa-lg text-babu redwaiting"></i>&nbsp; pour <b>refuser</b>
+
+      <br/><br/>
+      <i class="info-i">Après validation, un mail de confirmation sera automatiquement envoyé à votre client.
+        Vous pouvez aussi choisir de le contacter directement en cliquant sur son profil. </i>
+
+    </div>
+  </div>
+
+  <div>
+    <div class="panel panel-default">
+        <div class="panel-body panel-block">
+          Vos réservations
+        </div>
+      <div class="panel-body">
+
+        <% @rooms.each do |room| %>
+            <% room.reservations.each do |reservation| %>
+            <div class="row">
+
+
+              <div class="col-md-1">
+                <%= link_to user_path(reservation.user) do %>
+                  <%= image_tag avatar_url(reservation.user), class: "img-circle avatar-medium" %>
+                <% end %>
+              </div>
+
+
+              <div class="col-md-2">
+                <%= link_to user_path(reservation.user) do %>
+                  <%= reservation.user.fullname %>
+                <% end %> <br/>
+                <%= reservation.start_date.strftime('%v') %>
+                <br/>
+
+                <span ><br/>
+                  <% if reservation.user.associat %>
+                    <p><b>Association</b></p>
+                    <% else %>
+                        <% if reservation.user.local %>
+                          <p><b>Local</b></p>
+                        <% else %>
+                          <% if reservation.user.particulier %>
+                          <p><b>Hors commune</b></p>
+                          <% else %>
+                          <% end %>
+                        <% end %>
+                    <%end %>
+                </span><br/>
+              </div>
+
+<!--
+              <div class="col-md-2">
+                <%= link_to reservation.room.listing_name, room_path(reservation.room) %><br/><br/>
+                 <%= link_to room_path(reservation.room) do %>
+                    <%= image_tag reservation.room.cover_photo(:thumb) %>
+                <% end %>
+              </div> -->
+
+              <div class="col-md-4">
+                        <%= reservation.question %> <br/><br/>
+
+
+
+              </div>
+
+                <div class="col-md-2">
+
+
+                  <div class="text-center">
+                  <p><%= reservation.status %></p>
+                  <div class="form-inline">
+                    <% if reservation.Waiting? %>
+                      <%= link_to approve_reservation_path(reservation), method: :post do %> <i class="fas fa-check fa-lg greenwaiting"></i> <% end %> |
+                      <%= link_to decline_reservation_path(reservation), method: :post do %> <i class="fas fa-times fa-lg redwaiting"></i> <% end %>
+                    <% end %>
+
+
+                  </div>
+                </div>
+                </div>
+
+
+
+
+
+
+                <div class="col-md-3 text-center">
+                  <% if current_user && current_user != reservation.user %>
+                    <%= link_to "Envoyer un message", conversations_path(sender_id: current_user.id, recipient_id: reservation.user.id), method: :post, class: "btn btn-message" %>
+                  <br/><br/><% end %>
+
+                  <%= render partial: "reviews/host_form", locals: {reservation: reservation} if reservation.Approved? %><br/><br/>
+
+                </div>
+            </div>
+            <hr/>
+
+          <% end %>
+        <% end %>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <!-- <ul class="sidebar-list">
+      <li class="sidebar-item"><%= link_to "Vos salles", rooms_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "Vos réservations", your_reservations_path, class: "sidebar-link active" %></li>
+      <li class="sidebar-item"><%= link_to "Vos locations", your_booking_path, class: "sidebar-link" %></li>
+  </ul> -->
+  <br/><br/><br/>
+  </div>
+
+
+
+
+
+</div>
